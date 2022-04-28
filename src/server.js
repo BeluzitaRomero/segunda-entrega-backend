@@ -109,24 +109,27 @@ routerCart.delete("/:id", async (req, res) => {
 routerCart.get("/:id/products", async (req, res) => {
   const cart = await cartMongoDB.getById(req.params.id);
   const product = await productMongo.getById(req.body._id);
-  cart.products.push(product);
-  await cartMongoDB.updateById(req.params.id, cart);
-  res.send(`Producto enviado al carrito`);
+  if (product._id.valueOf() === req.body._id) {
+    cart.products.push(product);
+    await cartMongoDB.updateById(req.params.id, cart);
+    res.send(`Producto enviado al carrito`);
+  }
 });
 
 routerCart.delete("/:id/products/:idProd", async (req, res) => {
   const cart = await cartMongoDB.getById(req.params.id);
-  cart.products.map((p) => console.log(p._id));
+  const prodIndex = cart.products.findIndex(
+    (p) => p._id.valueOf() === req.params.idProd
+  );
+  if (prodIndex !== -1) {
+    cart.products.splice(prodIndex, 1);
+    await cartMongoDB.updateById(req.params.id, cart);
+    res.send(`Producto eliminado del carrito`);
+  } else {
+    res.send(`El producto a eliminar no existe`);
+  }
 
-  //No puedo hacer que el id del producto de la db venga solo
-  //con el string, me viene con el new ObjectId("62675b96a0117a945dd827c4")
-  //entonces no puedo usar un find para eliminarlo ni un findIndex
-  // if (prodIndex !== -1) {
-  //   cart.products.splice(prodIndex, 1);
-  //   await cartMongoDB.updateById(req.params.id, cart);
-  // }
-
-  res.send(`Producto eliminado del carrito`);
+  //Arreglado: ahora puede eliminar y actualizar la db
 });
 
 //Config del servidor
