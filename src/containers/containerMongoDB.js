@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
-// const { Schema, model } = mongoose;
+require("dotenv").config();
 
-mongoose.connect(
-  "mongodb+srv://belen:chiste@clustercoder.cqdn9.mongodb.net/ecommerceAtlas?retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.MONGO_URI);
 
 class ContainerMongoDB {
   constructor(collection, schema) {
@@ -15,7 +13,7 @@ class ContainerMongoDB {
       let docs = await this.collection.find();
       return docs;
     } catch (err) {
-      throw new Error(`Error al listar: ${error}`);
+      console.log(`Error al listar: ${error}`);
     }
   }
 
@@ -24,16 +22,17 @@ class ContainerMongoDB {
       const doc = await this.collection.findOne({ _id: id });
       return doc;
     } catch (error) {
-      throw new Error(`Error al listar por id: ${error}`);
+      console.log(`Error: el id no existe: ${error}`);
     }
   }
 
   async save(product) {
     try {
-      const doc = await this.collection.create(product);
+      const date = new Date().toLocaleString();
+      const doc = await this.collection.create({ ...product, timeStamp: date });
       return doc;
     } catch (error) {
-      throw new Error(`Error al guardar: ${error}`);
+      console.log(`Error al guardar: ${error}`);
     }
   }
 
@@ -42,7 +41,7 @@ class ContainerMongoDB {
       await this.collection.deleteOne({ _id: id });
       return `Elemento eliminado`;
     } catch (error) {
-      throw new Error(`Error al borrar: ${error}`);
+      console.log(`Error al borrar, no se encuentra id: ${error}`);
     }
   }
 
@@ -51,7 +50,7 @@ class ContainerMongoDB {
       await this.collection.deleteMany({});
       return `Vacio`;
     } catch (error) {
-      throw new Error(`Error al borrar: ${error}`);
+      console.log(`Error al borrar: ${error}`);
     }
   }
 
@@ -59,8 +58,8 @@ class ContainerMongoDB {
     try {
       const doc = await this.collection.updateOne({ _id: id }, param2);
       return doc;
-    } catch (err) {
-      throw new Error(`Error al actualizar: ${error}`);
+    } catch (error) {
+      console.log(`Error al actualizar: ${error}`);
     }
   }
 }
