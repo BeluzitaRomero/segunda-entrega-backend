@@ -1,5 +1,5 @@
 const ContainerMongoDB = require("../../containers/containerMongoDB");
-const cartSchema = require("../models/cart.model");
+const cartSchema = require("../models/cart.model.js");
 
 class DaoCartMongoDB extends ContainerMongoDB {
   constructor() {
