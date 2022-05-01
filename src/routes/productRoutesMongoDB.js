@@ -54,7 +54,12 @@ routerProducts.delete("/:id", async (req, res) => {
   if (!admin) {
     res.status(403).json({ error: `error 400, metodo delete: no autorizado` });
   } else {
-    res.status(200).json(await productMongo.deleteById(req.params.id));
+    const idExists = await productMongo.getById(req.params.id);
+    if (idExists) {
+      res.status(200).json(await productMongo.deleteById(req.params.id));
+    } else {
+      res.status(400).json({ error: `El id no existe` });
+    }
   }
 });
 //DELETE ALL
