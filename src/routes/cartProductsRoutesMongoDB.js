@@ -1,15 +1,15 @@
 const express = require("express");
 const routerCartProducts = express.Router();
 
-const cartMongoDB = require("../daos/carts/DaoCartMongoDB");
-// const cartMongoDB = new DaoCartMongoDB();
+const DaoCartMongoDB = require("../daos/carts/DaoCartMongoDB");
+const cartMongoDB = new DaoCartMongoDB();
 
-const productMongo = require("../daos/products/DaoProductsMongoDB");
-// const productMongo = new DaoProductsMongo();
+const DaoProductsMongo = require("../daos/products/DaoProductsMongoDB");
+const productMongo = new DaoProductsMongo();
 
 //MONGO Atlas Carrito + productos -----------------------------------------------//
 
-routerCartProducts.get("/:id/:idProd", async (req, res) => {
+routerCartProducts.post("/:id/:idProd", async (req, res) => {
   const cart = await cartMongoDB.getById(req.params.id);
   const product = await productMongo.getById(req.params.idProd);
 
