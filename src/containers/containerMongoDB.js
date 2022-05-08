@@ -3,6 +3,13 @@ require("dotenv").config();
 
 mongoose.connect(process.env.MONGO_URI);
 
+mongoose.connection.on("open", () => {
+  console.log("Base de datos conectada con exito!");
+});
+mongoose.connection.on("error", () => {
+  console.log("Error en la conexion a la base de datos");
+});
+
 class ContainerMongoDB {
   constructor(collection, schema) {
     this.collection = mongoose.model(collection, schema);
@@ -65,13 +72,6 @@ class ContainerMongoDB {
 }
 
 module.exports = ContainerMongoDB;
-
-// mongoose.connection.on("open", () => {
-//   console.log("Base de datos conectada con exito!");
-// });
-// mongoose.connection.on("error", () => {
-//   console.log("Error en la conexion a la base de datos");
-// });
 
 // const productsSchema = new Schema({
 //   title: {

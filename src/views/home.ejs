@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("templates/head") %>
+  <body style="background-color: rgb(58, 61, 70)">
+    <section style="width: 50%; margin: auto">
+      <h1 style="text-align: center; color: white">Home</h1>
+      <% data.forEach(function(user){ %>
+      <h2>Hola <%= user.user %></h2>
+      <button id="logout">Logout</button>
+      <% })%>
+    </section>
+  </body>
+</html>
