@@ -6,7 +6,9 @@
       <h1 style="text-align: center; color: white">Home</h1>
       <% if(user){ %> <% user.forEach(function(name){ %>
       <h1>Hola <%=name.user %></h1>
-      <button class="btn btn-danger" id="logout">Logout</button>
+      <a href="/logout"
+        ><button class="btn btn-danger" id="logout">Logout</button></a
+      >
       <% })%> <% }%>
     </section>
   </body>
