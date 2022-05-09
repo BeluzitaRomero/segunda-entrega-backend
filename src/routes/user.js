@@ -26,10 +26,10 @@ routerUser.post("/login", (req, res) => {
   }
 });
 
-routerUser.get("/", auth, (req, res) => {
+routerUser.get("/", (req, res) => {
   console.log(req.session.user);
   res.render("home", {
-    ststus: req.session.login,
+    status: req.session.login,
     user: [req.session.user],
   });
 });

@@ -9,7 +9,15 @@
       <a href="/api/user/logout"
         ><button class="btn btn-danger" id="logout">Logout</button></a
       >
-      <% })%> <% }%>
+      <% })%> <% }%> <% if(status === false){ %>
+      <a href="/api/products/save"
+        ><button class="btn btn-danger" id="logout" disabled>
+          Cargar productos
+        </button></a
+      ><%} else{ %>
+      <a href="/api/products/save"
+        ><button class="btn btn-danger" id="logout">Cargar productos</button></a
+      ><% } %>
     </section>
   </body>
 </html>
