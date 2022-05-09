@@ -10,14 +10,18 @@
         ><button class="btn btn-danger" id="logout">Logout</button></a
       >
       <% })%> <% }%> <% if(status === false){ %>
-      <a href="/api/products/save"
-        ><button class="btn btn-danger" id="logout" disabled>
-          Cargar productos
-        </button></a
-      ><%} else{ %>
+      <button class="btn btn-danger" id="logout" disabled>
+        Cargar productos
+      </button>
+      <%} else{ %>
       <a href="/api/products/save"
         ><button class="btn btn-danger" id="logout">Cargar productos</button></a
       ><% } %>
+    </section>
+    <section style="width: 50%; margin: auto; margin-top: 5rem">
+      <a href="/api/products"
+        ><button class="btn btn-danger" id="logout">Ver productos</button></a
+      >
     </section>
   </body>
 </html>
