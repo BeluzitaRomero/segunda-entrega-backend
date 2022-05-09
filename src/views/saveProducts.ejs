@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("templates/head") %>
+  <body style="background-color: rgb(58, 61, 70)">
+    <section style="width: 50%; margin: auto">
+      <% /* %> <% if(user){ %> <% user.forEach(function(name){ %>
+      <h1>Hola <%=name.user %></h1>
+      <button class="btn btn-danger" id="logout">Logout</button>
+      <% })%> <% }%> <% //es un comentario */ %>
+
+      <h1 style="text-align: center; color: white">Cargar productos</h1>
+      <form
+        action="/api/products"
+        method="post"
+        onSubmit="addProd();return false"
+        style="color: white; font-weight: bold"
+      >
+        <div class="mb-3">
+          <label for="product" class="form-label" style="font-size: 1.5rem"
+            >Producto</label
+          >
+          <input
+            type="text"
+            name="title"
+            class="form-control"
+            id="product"
+            placeholder="Nombre de producto"
+            style="
+              background: none;
+              border: none;
+              border-bottom: 2px solid rgb(228, 228, 228);
+              color: white;
+            "
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="price" class="form-label" style="font-size: 1.5rem"
+            >Precio</label
+          >
+          <input
+            type="number"
+            name="price"
+            class="form-control"
+            id="price"
+            placeholder="0000"
+            style="
+              background: none;
+              border: none;
+              border-bottom: 2px solid rgb(228, 228, 228);
+              color: white;
+            "
+            required
+          />
+        </div>
+        <div class="mb-3">
+          <label for="thumbnail" class="form-label" style="font-size: 1.5rem"
+            >Imagen URL</label
+          >
+          <input
+            type="text"
+            name="thumbnail"
+            class="form-control"
+            id="thumbnail"
+            placeholder="http://..."
+            style="
+              background: none;
+              border: none;
+              border-bottom: 2px solid rgb(228, 228, 228);
+              color: white;
+            "
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Enviar</button>
+      </form>
+    </section>
+    <script></script>
+  </body>
+</html>

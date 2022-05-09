@@ -7,7 +7,7 @@
 
       <form
         action="/login"
-        method="post"
+        method="get"
         onSubmit="user();return false"
         style="color: white; font-weight: bold"
       >
@@ -34,7 +34,7 @@
     </section>
     <script>
       const user = () => {
-        const user = { nombre: document.getElementById("user").value };
+        const user = document.getElementById("user").value;
         return user;
       };
     </script>

@@ -10,29 +10,37 @@ const productMongo = new DaoProductsMongo();
 const admin = true;
 
 //MONGO Atlas Productos ----------------------------------------------------------------//
-//READ
+//READ ------------Ya tiene vista
 routerProducts.get("/", async (req, res) => {
   const products = await productMongo.getAll();
-  res.send(products);
+  res.render("products", { data: products });
 });
 
-//READ ID
+// Ya tiene vista
+routerProducts.get("/save", async (req, res) => {
+  res.render("saveProducts");
+});
+
+//READ ID  ----------ya tiene vista
 routerProducts.get("/:id", async (req, res) => {
   const product = await productMongo.getById(req.params.id);
 
   if (!product) {
     res.status(404).json({ error: `El elemento no existe` });
   } else {
-    res.status(200).send(product);
+    res.status(200).render("products", { data: [product] });
+    //Le meti un array xq la vista itera un array, despues veo si
+    //sirve modificar el metodo desde la clase
   }
 });
 
-//CREATE
+//CREATE -------------ya tiene vista
 routerProducts.post("/", async (req, res) => {
   if (!admin) {
     res.status(403).json({ error: `error 400, metodo post: no autorizado` });
   } else {
-    res.status(201).json(await productMongo.save(req.body));
+    await productMongo.save(req.body);
+    res.status(201).redirect("/api/products");
     console.log(req.body);
   }
 });

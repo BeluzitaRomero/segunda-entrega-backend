@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("templates/head") %>
+  <body style="background-color: rgb(58, 61, 70)">
+    <section class="d-flex justify-content-center flex-wrap">
+      <% data.forEach(function(product){ %>
+      <div class="card" style="width: 18rem; margin: 1.5rem">
+        <img src="<%=product.thumbnail%>" class="card-img-top" alt="..." />
+        <div class="card-body">
+          <h5 class="card-title"><%=product.title %></h5>
+          <p class="card-text">$<%=product.price %></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+      <% })%>
+    </section>
+  </body>
+</html>
