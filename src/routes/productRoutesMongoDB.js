@@ -2,6 +2,8 @@
 const express = require("express");
 const routerProducts = express.Router();
 
+const auth = require("../middlewares/auth.middleware");
+
 const DaoProductsMongo = require("../daos/products/DaoProductsMongoDB");
 const productMongo = new DaoProductsMongo();
 
@@ -17,9 +19,9 @@ routerProducts.get("/", async (req, res) => {
 });
 
 // Ya tiene vista
-routerProducts.get("/save", async (req, res) => {
+routerProducts.get("/save", auth, async (req, res) => {
   res.render("saveProducts");
-});
+}); //PUSE EL AUTH PARA VER SI ME RESTRINGE EL ACCESO
 
 //READ ID  ----------ya tiene vista
 routerProducts.get("/:id", async (req, res) => {
