@@ -36,30 +36,15 @@ app.use(
   })
 );
 
-app.get("/", (req, res) => {
-  res.render("login");
-});
-
-app.get("/login", (req, res) => {
-  req.session.user = req.query;
-  res.render("home", { user: [req.session.user] });
-});
-
-app.get("/logout", (req, res) => {
-  console.log(req.session.user);
-  req.session.destroy((err) => {
-    if (!err) res.status(200).render("login");
-    else res.json(err);
-  });
-});
-
 // ----Config router PRODUCTOS, CARRIO, CARRITO+PRODUCTOS
 const routerCart = require("./routes/cartRoutesMongoDB");
 const routerProducts = require("./routes/productRoutesMongoDB");
 const routerCartProducts = require("./routes/cartProductsRoutesMongoDB");
+const routerUser = require("./routes/user");
 
 app.use("/api/products", routerProducts);
 app.use("/api/cart", routerCart);
 app.use("/api/cart/products", routerCartProducts);
+app.use("/api/user", routerUser);
 
 module.exports = app;
