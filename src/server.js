@@ -28,10 +28,11 @@ app.use(
     }),
     secret: process.env.SECRET,
     resave: true,
-    saveUninitialized: false,
-    // // cookie: {
-    // //   maxAge: 3000,
-    // // },
+    saveUninitialized: true,
+    cookie: {
+      maxAge: 60000,
+    },
+    rolling: true,
   })
 );
 
@@ -39,14 +40,15 @@ app.get("/", (req, res) => {
   res.render("login");
 });
 
-app.post("/login", (req, res) => {
-  req.session.user = req.body;
-  res.render("home", { data: [req.session.user] });
+app.get("/login", (req, res) => {
+  req.session.user = req.query;
+  res.render("home", { user: [req.session.user] });
 });
 
 app.get("/logout", (req, res) => {
+  console.log(req.session.user);
   req.session.destroy((err) => {
-    if (!err) res.status(200).send("Logout ok");
+    if (!err) res.status(200).render("login");
     else res.json(err);
   });
 });
