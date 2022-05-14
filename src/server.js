@@ -6,15 +6,19 @@ dotenv.config();
 const session = require("express-session");
 const mongoStore = require("connect-mongo");
 
+const passport = require("./utils/passport.util");
+const LocalStrategy = require("passport-local").Strategy;
+
 //EJS
 app.set("view engine", "ejs");
 app.set("views", "src/views");
 
-//Config del servidor
+//Config del servidor middlewares
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
+/******************************SESSION***********************************/
 //al objeto de config de session le puedo dar un tiempo de expiracion a traves de cookies
 app.use(
   session({
@@ -30,21 +34,27 @@ app.use(
     resave: true,
     saveUninitialized: true,
     cookie: {
-      maxAge: 60000,
+      maxAge: Number(process.env.EXPIRE),
     },
     rolling: true,
   })
 );
 
+/******************************PASSPORT***********************************/
+app.use(passport.initialize());
+app.use(passport.session());
+
 // ----Config router PRODUCTOS, CARRIO, CARRITO+PRODUCTOS
 const routerCart = require("./routes/cartRoutesMongoDB");
 const routerProducts = require("./routes/productRoutesMongoDB");
 const routerCartProducts = require("./routes/cartProductsRoutesMongoDB");
-const routerUser = require("./routes/user");
+// const routerUser = require("./routes/user");
+const authRouter = require("./routes/auth.router");
 
 app.use("/api/products", routerProducts);
 app.use("/api/cart", routerCart);
 app.use("/api/cart/products", routerCartProducts);
-app.use("/api/user", routerUser);
+// app.use("/api/user", routerUser);
+app.use("/api/user", authRouter);
 
 module.exports = app;
