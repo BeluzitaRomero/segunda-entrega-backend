@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include("templates/head") %>
+  <body style="background-color: rgb(58, 61, 70)">
+    <section style="width: 50%; margin: auto">
+      <h1 style="color: white; margin: 2rem 0">Registro</h1>
+      <form
+        action="/api/user/signup"
+        method="post"
+        onSubmit="user();return false"
+        style="color: white; font-weight: bold"
+      >
+        <div class="mb-3">
+          <input
+            type="text"
+            name="username"
+            class="form-control"
+            id="user"
+            placeholder="Usuario"
+            style="
+              background: none;
+              border: none;
+              border-bottom: 2px solid rgb(228, 228, 228);
+              color: white;
+            "
+          />
+          <br />
+          <input
+            type="text"
+            name="password"
+            class="form-control"
+            id="user"
+            placeholder="Contraseña"
+            style="
+              background: none;
+              border: none;
+              border-bottom: 2px solid rgb(228, 228, 228);
+              color: white;
+            "
+          />
+          <br />
+          <input
+            type="text"
+            name="firstName"
+            class="form-control"
+            id="user"
+            placeholder="Nombre"
+            style="
+              background: none;
+              border: none;
+              border-bottom: 2px solid rgb(228, 228, 228);
+              color: white;
+            "
+          />
+          <br />
+          <input
+            type="text"
+            name="lastName"
+            class="form-control"
+            id="user"
+            placeholder="Apellido"
+            style="
+              background: none;
+              border: none;
+              border-bottom: 2px solid rgb(228, 228, 228);
+              color: white;
+            "
+          />
+          <br />
+          <input
+            type="text"
+            name="email"
+            class="form-control"
+            id="user"
+            placeholder="E-mail"
+            style="
+              background: none;
+              border: none;
+              border-bottom: 2px solid rgb(228, 228, 228);
+              color: white;
+            "
+          />
+        </div>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          style="margin-bottom: 2rem"
+        >
+          Enviar
+        </button>
+      </form>
+      <a href="/api/user/login" style="text-decoration: none; color: white"
+        >Iniciar sesion</a
+      >
+    </section>
+  </body>
+</html>

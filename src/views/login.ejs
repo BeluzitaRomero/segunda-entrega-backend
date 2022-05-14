@@ -12,15 +12,25 @@
         style="color: white; font-weight: bold"
       >
         <div class="mb-3">
-          <label for="user" class="form-label" style="font-size: 1.5rem"
-            >Nombre de usuario</label
-          >
           <input
             type="text"
-            name="user"
+            name="username"
             class="form-control"
             id="user"
-            placeholder="Nombre de producto"
+            placeholder="Usuario"
+            style="
+              background: none;
+              border: none;
+              border-bottom: 2px solid rgb(228, 228, 228);
+              color: white;
+            "
+          />
+          <input
+            type="text"
+            name="password"
+            class="form-control"
+            id="user"
+            placeholder="Contraseña"
             style="
               background: none;
               border: none;
@@ -29,8 +39,17 @@
             "
           />
         </div>
-        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button
+          type="submit"
+          class="btn btn-primary"
+          style="margin-bottom: 2rem"
+        >
+          Enviar
+        </button>
       </form>
+      <a href="/api/user/signup" style="text-decoration: none; color: white"
+        >¿No estas registrado? Hacé click aquí!</a
+      >
     </section>
     <script>
       const user = () => {

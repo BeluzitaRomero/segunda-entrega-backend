@@ -5,15 +5,11 @@
     <section style="width: 50%; margin: auto">
       <h1 style="text-align: center; color: white">Home</h1>
       <% if(user){ %> <% user.forEach(function(name){ %>
-      <h1>Hola <%=name.user %></h1>
+      <h1>Hola <%=name.username %></h1>
       <a href="/api/user/logout"
         ><button class="btn btn-danger" id="logout">Logout</button></a
       >
-      <% })%> <% }%> <% if(status === false){ %>
-      <button class="btn btn-danger" id="logout" disabled>
-        Cargar productos
-      </button>
-      <%} else{ %>
+      <% })%>
       <a href="/api/products/save"
         ><button class="btn btn-danger" id="logout">Cargar productos</button></a
       ><% } %>
