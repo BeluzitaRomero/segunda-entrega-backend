@@ -51,10 +51,18 @@ const routerCartProducts = require("./routes/cartProductsRoutesMongoDB");
 // const routerUser = require("./routes/user");
 const authRouter = require("./routes/auth.router");
 
+//desafio 14***************************
+const infoRouter = require("./routes/infoRouter");
+const random = require("./routes/random");
+
 app.use("/api/products", routerProducts);
 app.use("/api/cart", routerCart);
 app.use("/api/cart/products", routerCartProducts);
 // app.use("/api/user", routerUser);
 app.use("/api/user", authRouter);
+
+//desafio 14***********************
+app.use("/info", infoRouter);
+app.use("/api/random", random);
 
 module.exports = app;
