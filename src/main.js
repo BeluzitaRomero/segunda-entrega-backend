@@ -1,6 +1,8 @@
 const app = require("./server");
+const args = require("../yargs/yargs");
 
-const PORT = 8080;
+const PORT = args.port; //Puerto desde yargs
+
 const server = app.listen(PORT, () => {
   console.log(`Servidor http escuchando en el puerto ${server.address().port}`);
 });
