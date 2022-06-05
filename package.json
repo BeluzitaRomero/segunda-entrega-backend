@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/main.js"
+    "start": "node src/main.js",
+    "fork": "pm2 start src/main.js --watch",
+    "cluster": "pm2 start src/main.js --name='Server1' -i --watch"
   },
   "keywords": [],
   "author": "",

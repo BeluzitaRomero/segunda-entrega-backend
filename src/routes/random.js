@@ -5,7 +5,7 @@ const { fork } = require("child_process");
 
 random.get("/:cant?", (req, res) => {
   const { cant } = req.query;
-  console.log(cant, "query");
+
   let calc = fork("./src/utils/calculoRandom.js");
   calc.send(cant);
 

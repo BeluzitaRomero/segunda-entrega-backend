@@ -1,6 +1,9 @@
 const express = require("express");
 const infoRouter = express.Router();
 
+//Desafio 15
+const numCPUs = require("os").cpus().length;
+
 const yargs = require("yargs/yargs")(process.argv.slice(2));
 
 const info = {
@@ -11,6 +14,7 @@ const info = {
   executionPath: process.execPath.split("\\").pop(),
   pid: process.pid,
   folder: process.cwd(),
+  numCpu: numCPUs,
 };
 
 console.log(info);
