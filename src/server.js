@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const dotenv = require("dotenv");
 dotenv.config();
+//desafio 16
+const compression = require("compression");
+app.use(compression());
 
 const session = require("express-session");
 const mongoStore = require("connect-mongo");
