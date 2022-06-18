@@ -58,9 +58,6 @@ const authRouter = require("./routes/auth.router");
 const infoRouter = require("./routes/infoRouter");
 const random = require("./routes/random");
 
-app.get("/", (req, res) => {
-  res.send("Home");
-});
 app.use("/api/products", routerProducts);
 app.use("/api/cart", routerCart);
 app.use("/api/cart/products", routerCartProducts);
