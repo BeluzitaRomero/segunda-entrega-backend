@@ -1,11 +1,11 @@
 //----Config router productos
 const express = require("express");
 const routerProducts = express.Router();
-const logger = require("../utils/logger");
+const logger = require("../utils/logger.js");
 
-const auth = require("../middlewares/auth.middleware");
+const auth = require("../middlewares/auth.middleware.js");
 
-const DaoProductsMongo = require("../daos/products/DaoProductsMongoDB");
+const DaoProductsMongo = require("../daos/products/DaoProductsMongoDB.js");
 const productMongo = new DaoProductsMongo();
 
 // require("dotenv").config();
