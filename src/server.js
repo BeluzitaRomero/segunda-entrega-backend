@@ -48,15 +48,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // ----Config router PRODUCTOS, CARRIO, CARRITO+PRODUCTOS
-const routerCart = require("./routes/cartRoutesMongoDB");
-const routerProducts = require("./routes/productRoutesMongoDB");
-const routerCartProducts = require("./routes/cartProductsRoutesMongoDB");
+const routerCart = require("./routes/cartRoutesMongoDB.js");
+const routerProducts = require("./routes/productRoutesMongoDB.js");
+const routerCartProducts = require("./routes/cartProductsRoutesMongoDB.js");
 // const routerUser = require("./routes/user");
 const authRouter = require("./routes/auth.router");
 
 //desafio 14***************************
-const infoRouter = require("./routes/infoRouter");
-const random = require("./routes/random");
+const infoRouter = require("./routes/infoRouter.js");
+const random = require("./routes/random.js");
 
 app.use("/api/products", routerProducts);
 app.use("/api/cart", routerCart);

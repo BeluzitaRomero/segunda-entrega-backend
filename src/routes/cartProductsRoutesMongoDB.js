@@ -1,10 +1,10 @@
 const express = require("express");
 const routerCartProducts = express.Router();
 
-const DaoCartMongoDB = require("../daos/carts/DaoCartMongoDB");
+const DaoCartMongoDB = require("../daos/carts/DaoCartMongoDB.js");
 const cartMongoDB = new DaoCartMongoDB();
 
-const DaoProductsMongo = require("../daos/products/DaoProductsMongoDB");
+const DaoProductsMongo = require("../daos/products/DaoProductsMongoDB.js");
 const productMongo = new DaoProductsMongo();
 
 //MONGO Atlas Carrito + productos -----------------------------------------------//
